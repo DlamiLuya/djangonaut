@@ -1,0 +1,24 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<h1> Login as User </h1>
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        <div class="container">
+            <form action="{% url 'user_auth:authenticate_user' %}" method="post">
+                {% csrf_token %}
+                <label>Username</label>
+                <input type="text" name="username" placeholder="User" required>
+                <br/><br/>
+                <label>Password</label>
+                <input type="password" name="password" required>
+                <br/><br/>
+                <input type="submit" value="Login" />
+                <a href="{% url 'user_auth:register' %}">
+                    <button type="button" type="button">register</button>
+                </a>
+            </form>
+{% endblock %}
